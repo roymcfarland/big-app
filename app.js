@@ -2,18 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-// Load in both of our controllers
+// Controllers
 var indexController = require('./controllers/index.js');
 var apiController = require('./controllers/apiController.js');
 
-// Connect to our database
+// Database Connection
 mongoose.connect('mongodb://localhost/bigApp');
 
-// Seed the database:
-// 		Since I don't need to save access
-// 		to each seed (as in they just execute),
-// 		then I don't need to store them in
-// 		a variable
+// Seeds
 require('./models/seeds/musicSeed.js');
 
 var app = express();
