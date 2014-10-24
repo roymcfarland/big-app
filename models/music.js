@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-// What will a music document look like?
 var musicSchema = mongoose.Schema({
 	title: String,
 	artist: String,
@@ -11,5 +10,4 @@ var musicSchema = mongoose.Schema({
 	}]
 });
 
-// Export the model
 module.exports = mongoose.model('music', musicSchema);

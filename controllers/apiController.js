@@ -1,4 +1,3 @@
-// API needs access to the Music model
 var Music = require('../models/music.js');
 
 // Define our API controller
