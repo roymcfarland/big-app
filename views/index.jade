@@ -1,4 +1,39 @@
 extends layout
 
 block content
-	h1 Hello Boulder!
+	h1 BIG Music App
+
+	//- Form to add new music
+
+	form#new-music
+		input(type="text", name="title", placeholder="title")
+		input(type="text", name="artist", placeholder="artist")
+		input(type="submit")
+
+	h2 Music List
+
+	//- Placeholder for where track elements go
+	ul#music-list
+
+
+	//- Modal for editing an item
+	#edit-modal.modal.fade
+		.modal-dialog
+			form#edit-form.form
+				.modal-content
+					.modal-header
+						button.close(data-dismiss="modal") &times;
+						h4.modal-title Edit Item
+					.modal-body
+						//- This hidden field will hold on to
+								the id of whatever item we are editing
+						input(type="hidden", name="id")
+							
+						.form-group
+							input.form-control(type="text", name="title", placeholder="title")
+						.form-group
+							input.form-control(type="text", name="artist", placeholder="artist")
+
+					.modal-footer
+						button.btn.btn-default(data-dismiss="modal") Close
+						input.btn.btn-primary(type="submit")

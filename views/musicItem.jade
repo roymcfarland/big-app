@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	h1= title
+
+	h3= artist
+
+	p: em= numberOfCharactersInLyrics
+
+	h3 Band Members
+	ul
+		for member in bandMembers
+			li
+				strong= member.name
+				|  #{member.instrument}

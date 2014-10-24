@@ -2,8 +2,18 @@ doctype html
 html(lang='en')
 	head
 		meta(charset="utf-8")
-		title Untitled
+		title Big App
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
 
 	body
-		block content
-		
+		.container
+			block content
+
+		//- Get jQuery loaded
+		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+
+		//- Get bootstrap's js
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+
+		//- Load in our custom JS file
+		script(src="scripts/main.js")
