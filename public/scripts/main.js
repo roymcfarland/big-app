@@ -38,11 +38,11 @@ $(function(){
 	// 		using AJAX and render it
 	// 		to the page.
 	$.get('/api/getMusic', {}, function(responseData){
-		// We've got a dataset back from the server,
-		// so let's build out the display in the DOM
+		// Received dataset from the server,
+		// so now build out the display in the DOM
 		console.log('getMusic Response:', responseData);
 
-		// Loop through the responseData array...
+		// Loop through the responseData array
 		for (var i = 0; i < responseData.length; i++) {
 
 			// And render each track to the DOM
@@ -53,8 +53,7 @@ $(function(){
 
 	// Hijack the new-music form
 	$('#new-music').on('submit', function(e){
-		// Don't let the browser submit the form;
-		// we want to handle it internally
+		// Don't let the browser submit the form
 		e.preventDefault();
 
 		// Pull out the values from the form fields manually
@@ -75,9 +74,9 @@ $(function(){
 		// it the trackData object
 		$.post('/api/addMusic', trackData, function(responseData){
 			// When the server is done saving the track,
-			// it'll send us back the track information
+			// it'll send back the track information
 			// that it saved into the database, so
-			// we just need to append it to the view
+			// now append it to the view
 			var trackEl = renderTrack(responseData);
 			$('#music-list').append(trackEl);
 		});
@@ -86,8 +85,8 @@ $(function(){
 
 	// Delegated event for our delete buttons
 	$(document).on('click', '.delete', function(){
-		// Cache this selector so that we can
-		// use it within the scope of our callback
+		// Cache this selector so it can be
+		// used within the scope of our callback
 		// from the post to api/delete
 		var container = $(this).closest('li');
 
@@ -102,7 +101,7 @@ $(function(){
 			console.log('responseData:', responseData);
 			if(responseData.success === true){
 				
-				// successful delete, so remove from DOM
+				// successful delete so remove from DOM
 				container.remove();
 			}
 		});
@@ -121,29 +120,27 @@ $(function(){
 		$.get(requestUrl, {}, function(responseData){
 			console.log(responseData);
 
-			// Set the values of the inputs in our modal
+			// Set the values of the inputs in modal
 			// to be the values of the response data
 			modal.find('[name=id]').val(responseData._id);
 			modal.find('[name=title]').val(responseData.title);
 			modal.find('[name=artist]').val(responseData.artist);
 
-			// Finally, after all the data is retrieved and
-			// we've updated the values in the form,
-			// let's show the modal
+			// Finally, after all the data is retrieved, the
+			// form is fully updated. So show the modal.
 			modal.modal('show');
 		});
 
 	});
 
 	// Since the edit modal is already created,
-	// we can just listen for submission of the form
-	// without delegating it
+	// event listener doesn't need to be delegated.
 	$('#edit-modal').on('submit', function(e){
 		e.preventDefault();
 
 		var modal = $('#edit-modal');
 
-		// We'll use the data from the edit form
+		// Use the data from the edit form
 		// to build a request to the server
 		var musicId = modal.find('[name=id]').val();
 		var musicTitle = modal.find('[name=title]').val();
@@ -155,7 +152,7 @@ $(function(){
 		};
 
 		$.post('/api/update', requestData, function(responseData){
-			// now that the update is complete, let's "refresh" the
+			// now that the update is complete, "refresh" the
 			// existing item in the DOM
 			console.log(responseData);
 
