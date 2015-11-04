@@ -1,2 +1,2 @@
 # Big App
-Simple, Modular Code. Implemented Well.
+Simple Modular Code. Implemented Well.
